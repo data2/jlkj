@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>觉澜科技工作室 · JueLan Tech</title>
+    <title>觉澜科技工作室 · 技术开发</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        /* ===== 全局重置 ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         html {
             scroll-behavior: smooth;
         }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #07080e;
@@ -24,7 +21,6 @@
             overflow-x: hidden;
             line-height: 1.6;
         }
-
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -36,7 +32,7 @@
             border-radius: 10px;
         }
 
-        /* ===== 粒子画布 ===== */
+        /* 粒子 */
         #particles-canvas {
             position: fixed;
             top: 0;
@@ -47,67 +43,55 @@
             pointer-events: none;
         }
 
-        /* ===== 导航 ===== */
+        /* 导航 */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 1rem 2rem;
-            background: rgba(7, 8, 14, 0.65);
+            padding: 0.9rem 2.4rem;
+            background: rgba(7, 8, 14, 0.7);
             backdrop-filter: blur(24px) saturate(1.6);
-            border-bottom: 1px solid rgba(99, 102, 241, 0.12);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: 0.3s;
         }
-
         .navbar .brand {
             display: flex;
             align-items: center;
             gap: 0.6rem;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            letter-spacing: -0.3px;
+            text-decoration: none;
+            color: #e8ecf4;
         }
-
         .navbar .brand .logo-mark {
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             background: linear-gradient(135deg, #6366f1, #8b5cf6);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #fff;
             font-weight: 800;
         }
-
-        .navbar .brand span {
-            background: linear-gradient(135deg, #e8ecf4, #a5b4fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.2rem;
             list-style: none;
             font-size: 0.9rem;
             font-weight: 500;
         }
-
         .nav-links a {
             color: #94a3b8;
             text-decoration: none;
             transition: 0.25s;
             position: relative;
         }
-
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -118,15 +102,14 @@
             background: linear-gradient(90deg, #6366f1, #8b5cf6);
             transition: 0.3s;
         }
-
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: #fff;
         }
-
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
         }
-
         .nav-toggle {
             display: none;
             font-size: 1.4rem;
@@ -134,7 +117,6 @@
             cursor: pointer;
         }
 
-        /* ===== 通用容器 ===== */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -143,7 +125,7 @@
             z-index: 1;
         }
 
-        /* ===== Hero ===== */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -151,11 +133,9 @@
             padding-top: 5rem;
             position: relative;
         }
-
         .hero-content {
             max-width: 720px;
         }
-
         .hero-badge {
             display: inline-block;
             background: rgba(99, 102, 241, 0.15);
@@ -169,7 +149,6 @@
             margin-bottom: 1.5rem;
             backdrop-filter: blur(8px);
         }
-
         .hero h1 {
             font-size: 4rem;
             font-weight: 800;
@@ -177,27 +156,23 @@
             letter-spacing: -0.02em;
             margin-bottom: 1.2rem;
         }
-
         .hero h1 .gradient {
             background: linear-gradient(135deg, #818cf8, #a78bfa, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: #94a3b8;
             max-width: 540px;
             margin-bottom: 2rem;
         }
-
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
         }
-
         .btn-primary {
             background: linear-gradient(135deg, #6366f1, #7c3aed);
             color: #fff;
@@ -214,12 +189,10 @@
             gap: 0.6rem;
             box-shadow: 0 4px 24px rgba(99, 102, 241, 0.3);
         }
-
         .btn-primary:hover {
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 8px 40px rgba(99, 102, 241, 0.45);
         }
-
         .btn-outline {
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -235,37 +208,27 @@
             align-items: center;
             gap: 0.6rem;
         }
-
         .btn-outline:hover {
             background: rgba(255, 255, 255, 0.04);
             border-color: rgba(255, 255, 255, 0.25);
         }
-
-        .floating-stats {
+        .hero-stats {
             display: flex;
             gap: 3rem;
             margin-top: 3rem;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
-
-        .floating-stats .stat {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .floating-stats .stat .num {
-            font-size: 1.6rem;
+        .hero-stats .stat .num {
+            font-size: 1.5rem;
             font-weight: 700;
             color: #fff;
         }
-
-        .floating-stats .stat .label {
+        .hero-stats .stat .label {
             font-size: 0.8rem;
             color: #64748b;
         }
 
-        /* ===== 浮动光球 ===== */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -273,7 +236,6 @@
             opacity: 0.3;
             pointer-events: none;
         }
-
         .orb-1 {
             width: 400px;
             height: 400px;
@@ -281,7 +243,6 @@
             top: -5%;
             right: -5%;
         }
-
         .orb-2 {
             width: 300px;
             height: 300px;
@@ -291,7 +252,6 @@
             opacity: 0.2;
         }
 
-        /* ===== 通用标题 ===== */
         .section-title {
             font-size: 2.6rem;
             font-weight: 700;
@@ -299,14 +259,12 @@
             margin-bottom: 1rem;
             text-align: center;
         }
-
         .section-title .gradient {
             background: linear-gradient(135deg, #a5b4fc, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .section-sub {
             text-align: center;
             color: #94a3b8;
@@ -315,17 +273,15 @@
             font-size: 1.05rem;
         }
 
-        /* ===== 服务卡片 ===== */
+        /* 服务卡片 */
         .services {
             padding: 5rem 0;
         }
-
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
-
         .service-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -336,7 +292,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .service-card::before {
             content: '';
             position: absolute;
@@ -349,37 +304,31 @@
             transition: 0.4s;
             border-radius: 2rem;
         }
-
         .service-card:hover {
             transform: translateY(-8px);
             border-color: rgba(99, 102, 241, 0.25);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
         }
-
         .service-card:hover::before {
             opacity: 1;
         }
-
         .service-card .icon {
             font-size: 2.6rem;
             margin-bottom: 1.2rem;
             display: block;
             color: #818cf8;
         }
-
         .service-card h3 {
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 0.6rem;
             position: relative;
         }
-
         .service-card p {
             color: #94a3b8;
             font-size: 0.95rem;
             position: relative;
         }
-
         .service-card .tags {
             margin-top: 1.2rem;
             display: flex;
@@ -387,7 +336,6 @@
             gap: 0.4rem;
             position: relative;
         }
-
         .service-card .tags span {
             background: rgba(99, 102, 241, 0.1);
             padding: 0.15rem 0.9rem;
@@ -397,12 +345,26 @@
             color: #a5b4fc;
             border: 1px solid rgba(99, 102, 241, 0.1);
         }
-
-        /* ===== 业务方向 ===== */
-        .domains {
-            padding: 3rem 0 5rem;
+        .service-card .learn-link {
+            display: inline-block;
+            margin-top: 1.2rem;
+            color: #818cf8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+        }
+        .service-card .learn-link i {
+            transition: 0.3s;
+        }
+        .service-card .learn-link:hover i {
+            transform: translateX(4px);
         }
 
+        /* 业务方向 */
+        .domains {
+            padding: 2rem 0 5rem;
+        }
         .domain-pill {
             display: inline-block;
             background: rgba(255, 255, 255, 0.03);
@@ -412,21 +374,17 @@
             font-weight: 500;
             font-size: 0.95rem;
             transition: 0.3s;
-            cursor: default;
             margin: 0.3rem;
         }
-
         .domain-pill i {
             color: #818cf8;
             margin-right: 0.5rem;
         }
-
         .domain-pill:hover {
             background: rgba(99, 102, 241, 0.08);
             border-color: rgba(99, 102, 241, 0.2);
             transform: scale(1.02);
         }
-
         .domain-wrap {
             display: flex;
             flex-wrap: wrap;
@@ -434,88 +392,52 @@
             gap: 0.4rem;
         }
 
-        /* ===== 项目案例 ===== */
-        .projects {
-            padding: 3rem 0 5rem;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.8rem;
-        }
-
-        .project-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 1.5rem;
-            padding: 1.8rem 1.8rem 2rem;
-            transition: 0.35s;
-        }
-
-        .project-item:hover {
-            border-color: rgba(99, 102, 241, 0.2);
-            background: rgba(255, 255, 255, 0.03);
-            transform: translateY(-4px);
-        }
-
-        .project-item .p-icon {
-            font-size: 2rem;
-            color: #818cf8;
-            margin-bottom: 0.6rem;
-        }
-
-        .project-item h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .project-item p {
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-
-        /* ===== CTA ===== */
+        /* CTA */
         .cta-section {
             padding: 4rem 0;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.03);
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
-
         .cta-section h2 {
             font-size: 2.4rem;
             font-weight: 700;
             margin-bottom: 0.8rem;
         }
-
         .cta-section p {
             color: #94a3b8;
             max-width: 480px;
             margin: 0 auto 2rem;
         }
 
-        /* ===== 页脚 ===== */
+        /* 页脚 */
         .footer {
             padding: 2.5rem 0;
             text-align: center;
             font-size: 0.85rem;
             color: #475569;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
         }
-
         .footer .brand-foot {
             font-weight: 600;
             color: #a5b4fc;
         }
-
         .footer a {
             color: #6366f1;
             text-decoration: none;
         }
+        .footer .footer-links {
+            margin-top: 0.5rem;
+        }
+        .footer .footer-links a {
+            color: #64748b;
+            margin: 0 0.8rem;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .footer .footer-links a:hover {
+            color: #a5b4fc;
+        }
 
-        /* ===== 响应式 ===== */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -531,41 +453,37 @@
                 width: 200px;
                 gap: 1rem;
             }
-
             .nav-links.open {
                 display: flex;
             }
-
             .nav-toggle {
                 display: block;
             }
-
             .hero h1 {
                 font-size: 2.6rem;
             }
-
-            .floating-stats {
+            .hero-stats {
                 gap: 1.5rem;
                 flex-wrap: wrap;
             }
-
             .orb-1 {
                 width: 200px;
                 height: 200px;
                 right: -20%;
             }
-
             .section-title {
                 font-size: 2rem;
             }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
+            .navbar {
+                padding: 0.8rem 1.2rem;
             }
             .container {
                 padding: 0 1.2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
             }
             .service-card {
                 padding: 1.8rem 1.2rem;
@@ -575,32 +493,30 @@
 </head>
 <body>
 
-    <!-- ===== 粒子背景 ===== -->
     <canvas id="particles-canvas"></canvas>
 
-    <!-- ===== 浮动光球 ===== -->
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
-    <!-- ===== 导航 ===== -->
+    <!-- 导航 -->
     <nav class="navbar">
-        <div class="brand">
+        <a href="index.html" class="brand">
             <div class="logo-mark">觉</div>
             <span>觉澜科技工作室</span>
-        </div>
+        </a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#services">能力</a></li>
-            <li><a href="#domains">方向</a></li>
-            <li><a href="#projects">案例</a></li>
-            <li><a href="#contact">合作</a></li>
+            <li><a href="index.html" class="active">首页</a></li>
+            <li><a href="services.html">服务</a></li>
+            <li><a href="cases.html">案例</a></li>
+            <li><a href="contact.html">联系</a></li>
         </ul>
         <div class="nav-toggle" id="navToggle">
             <i class="fas fa-bars"></i>
         </div>
     </nav>
 
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="home">
+    <!-- Hero -->
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
@@ -615,14 +531,14 @@
                     为政企及中小商户提供可落地的技术交付。
                 </p>
                 <div class="hero-actions">
-                    <a href="#services" class="btn-primary">
-                        <i class="fas fa-rocket"></i> 探索能力
+                    <a href="services.html" class="btn-primary">
+                        <i class="fas fa-rocket"></i> 探索服务
                     </a>
-                    <a href="#contact" class="btn-outline">
+                    <a href="contact.html" class="btn-outline">
                         <i class="fas fa-paper-plane"></i> 合作咨询
                     </a>
                 </div>
-                <div class="floating-stats">
+                <div class="hero-stats">
                     <div class="stat">
                         <span class="num">全栈</span>
                         <span class="label">技术交付</span>
@@ -640,16 +556,13 @@
         </div>
     </section>
 
-    <!-- ===== 服务能力 ===== -->
+    <!-- 服务概览 -->
     <section class="services" id="services">
         <div class="container">
             <h2 class="section-title">
                 <span class="gradient">核心能力</span> · 产品
             </h2>
-            <p class="section-sub">
-                以技术为底座，提供从需求到交付的全链路开发服务
-            </p>
-
+            <p class="section-sub">以技术为底座，提供从需求到交付的全链路开发服务</p>
             <div class="card-grid">
                 <div class="service-card">
                     <span class="icon"><i class="fas fa-laptop-code"></i></span>
@@ -660,8 +573,8 @@
                         <span>Python</span>
                         <span>PostgreSQL</span>
                     </div>
+                    <a href="services.html#software" class="learn-link">了解详情 <i class="fas fa-arrow-right"></i></a>
                 </div>
-
                 <div class="service-card">
                     <span class="icon"><i class="fab fa-weixin"></i></span>
                     <h3>小程序 · 垂直2C</h3>
@@ -671,8 +584,8 @@
                         <span>云开发</span>
                         <span>支付</span>
                     </div>
+                    <a href="services.html#miniprogram" class="learn-link">了解详情 <i class="fas fa-arrow-right"></i></a>
                 </div>
-
                 <div class="service-card">
                     <span class="icon"><i class="fas fa-toolbox"></i></span>
                     <h3>软件工具 & 自动化</h3>
@@ -682,13 +595,14 @@
                         <span>API</span>
                         <span>可视化</span>
                     </div>
+                    <a href="services.html#tools" class="learn-link">了解详情 <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== 业务方向 ===== -->
-    <section class="domains" id="domains">
+    <!-- 业务方向 -->
+    <section class="domains">
         <div class="container">
             <h2 class="section-title">
                 <span class="gradient">业务</span> 方向
@@ -696,73 +610,44 @@
             <p class="section-sub">覆盖多维度技术场景，灵活匹配不同需求</p>
             <div class="domain-wrap">
                 <span class="domain-pill"><i class="fas fa-code"></i> 软件开发</span>
-                <span class="domain-pill"><i class="fas fa-boxes"></i> 物品批发</span>
                 <span class="domain-pill"><i class="fas fa-layer-group"></i> 垂直2C · 小程序</span>
                 <span class="domain-pill"><i class="fas fa-cog"></i> 软件工具</span>
             </div>
         </div>
     </section>
 
-    <!-- ===== 项目案例 ===== -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="gradient">典型</span> 案例
-            </h2>
-            <p class="section-sub">过往交付场景，覆盖多行业与业务类型</p>
-            <div class="project-grid">
-                <div class="project-item">
-                    <div class="p-icon"><i class="fas fa-store"></i></div>
-                    <h4>垂直电商小程序</h4>
-                    <p>全流程电商 + 支付 + 会员体系，日活稳定。</p>
-                </div>
-                <div class="project-item">
-                    <div class="p-icon"><i class="fas fa-chart-line"></i></div>
-                    <h4>数据看板系统</h4>
-                    <p>多源数据聚合 + 可视化报表，助力决策。</p>
-                </div>
-                <div class="project-item">
-                    <div class="p-icon"><i class="fas fa-robot"></i></div>
-                    <h4>自动化采集工具</h4>
-                    <p>定制爬虫 + 结构化输出，提升人效。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CTA ===== -->
-    <section class="cta-section" id="contact">
+    <!-- CTA -->
+    <section class="cta-section">
         <div class="container">
             <h2>让技术 <span style="color:#a5b4fc;">落地</span> 你的业务</h2>
             <p>从构思到上线，觉澜科技工作室提供清晰、高效的技术支持。</p>
-            <a href="#" class="btn-primary" style="text-decoration:none;">
+            <a href="contact.html" class="btn-primary" style="text-decoration:none;">
                 <i class="fas fa-envelope"></i> 联系合作
             </a>
         </div>
     </section>
 
-    <!-- ===== 页脚 ===== -->
+    <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
-            <p>
-                <span class="brand-foot">觉澜科技工作室</span>
-                <span style="margin:0 8px;color:#334155;">·</span>
-                技术开发工作室
-                <span style="margin:0 8px;color:#334155;">·</span>
-                <a href="https://jlkj.shop" target="_blank">jlkj.shop</a>
-            </p>
+            <p><span class="brand-foot">觉澜科技工作室</span> · 技术开发工作室</p>
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="services.html">服务</a>
+                <a href="cases.html">案例</a>
+                <a href="contact.html">联系</a>
+            </div>
         </div>
     </footer>
 
-    <!-- ===== JavaScript ===== -->
     <script>
-        // ===== 粒子系统 =====
+        // 粒子
         (function() {
             const canvas = document.getElementById('particles-canvas');
             const ctx = canvas.getContext('2d');
             let width, height;
             let particles = [];
-            const count = 90;
+            const count = 80;
 
             function resize() {
                 width = canvas.width = window.innerWidth;
@@ -775,8 +660,8 @@
                     particles.push({
                         x: Math.random() * width,
                         y: Math.random() * height,
-                        vx: (Math.random() - 0.5) * 0.4,
-                        vy: (Math.random() - 0.5) * 0.4,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.3,
                         r: Math.random() * 1.6 + 0.6,
                         alpha: Math.random() * 0.4 + 0.1
                     });
@@ -792,14 +677,11 @@
                     if (p.x > width) p.x = 0;
                     if (p.y < 0) p.y = height;
                     if (p.y > height) p.y = 0;
-
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
                     ctx.fillStyle = `rgba(165, 180, 252, ${p.alpha})`;
                     ctx.fill();
                 });
-
-                // 连线
                 for (let i = 0; i < particles.length; i++) {
                     for (let j = i + 1; j < particles.length; j++) {
                         const dx = particles[i].x - particles[j].x;
@@ -809,7 +691,7 @@
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = `rgba(165, 180, 252, ${0.08 * (1 - dist / 140)})`;
+                            ctx.strokeStyle = `rgba(165, 180, 252, ${0.06 * (1 - dist / 140)})`;
                             ctx.lineWidth = 0.6;
                             ctx.stroke();
                         }
@@ -822,25 +704,17 @@
                 resize();
                 createParticles();
             });
-
             resize();
             createParticles();
             draw();
         })();
 
-        // ===== 移动端导航切换 =====
+        // 移动端导航
         const toggle = document.getElementById('navToggle');
         const links = document.getElementById('navLinks');
-
-        toggle.addEventListener('click', () => {
-            links.classList.toggle('open');
-        });
-
-        // 点击导航项后自动关闭
+        toggle.addEventListener('click', () => links.classList.toggle('open'));
         links.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                links.classList.remove('open');
-            });
+            link.addEventListener('click', () => links.classList.remove('open'));
         });
     </script>
 
