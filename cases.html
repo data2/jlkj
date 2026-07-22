@@ -45,13 +45,14 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 0.9rem 2.4rem;
+            padding: 1rem 2.4rem;
             background: rgba(7, 8, 14, 0.7);
             backdrop-filter: blur(24px) saturate(1.6);
             border-bottom: 1px solid rgba(99, 102, 241, 0.1);
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            gap: 4rem;
         }
         .navbar .brand {
             display: flex;
@@ -61,6 +62,7 @@
             font-weight: 700;
             text-decoration: none;
             color: #e8ecf4;
+            flex-shrink: 0;
         }
         .navbar .brand .logo-mark {
             width: 34px;
@@ -76,9 +78,9 @@
         }
         .nav-links {
             display: flex;
-            gap: 2.2rem;
+            gap: 3.2rem;
             list-style: none;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             font-weight: 500;
         }
         .nav-links a {
@@ -211,24 +213,13 @@
             font-weight: 600;
             color: #a5b4fc;
         }
-        .footer a {
-            color: #6366f1;
-            text-decoration: none;
-        }
-        .footer .footer-links {
-            margin-top: 0.5rem;
-        }
-        .footer .footer-links a {
-            color: #64748b;
-            margin: 0 0.8rem;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-        .footer .footer-links a:hover {
-            color: #a5b4fc;
-        }
 
         @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between;
+                gap: 0;
+                padding: 0.8rem 1.2rem;
+            }
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -242,6 +233,7 @@
                 right: 1rem;
                 width: 200px;
                 gap: 1rem;
+                font-size: 1rem;
             }
             .nav-links.open {
                 display: flex;
@@ -254,9 +246,6 @@
             }
             .cases-grid .case-item .top {
                 flex-direction: column;
-            }
-            .navbar {
-                padding: 0.8rem 1.2rem;
             }
             .container {
                 padding: 0 1.2rem;
@@ -294,55 +283,59 @@
     <section class="cases-grid">
         <div class="container">
 
+            <!-- 案例1：会员笔记微信小程序 -->
             <div class="case-item">
                 <div class="top">
-                    <div class="icon"><i class="fas fa-store"></i></div>
+                    <div class="icon"><i class="fab fa-weixin"></i></div>
                     <span class="tag">小程序</span>
                 </div>
-                <h3>垂直电商小程序</h3>
-                <p>全流程电商 + 微信支付 + 会员体系，上线后日活稳定，转化率提升 30%。</p>
+                <h3>会员笔记微信小程序</h3>
+                <p>面向内容创作者的笔记管理与会员订阅工具。支持图文笔记发布、会员分级阅读、付费订阅、数据看板等功能，帮助创作者实现内容变现。</p>
                 <div class="meta">
-                    <span><i class="fas fa-tag"></i> 电商 · 零售</span>
-                    <span><i class="fas fa-code"></i> 微信小程序 · 云开发</span>
+                    <span><i class="fas fa-tag"></i> 内容 · 订阅</span>
+                    <span><i class="fas fa-code"></i> 微信小程序 · 云开发 · 支付</span>
                 </div>
             </div>
 
+            <!-- 案例2：Windows 桌面软件开发 -->
             <div class="case-item">
                 <div class="top">
-                    <div class="icon"><i class="fas fa-chart-line"></i></div>
-                    <span class="tag">数据系统</span>
+                    <div class="icon"><i class="fas fa-windows"></i></div>
+                    <span class="tag">桌面软件</span>
                 </div>
-                <h3>数据看板系统</h3>
-                <p>多源数据聚合 + 可视化报表 + 权限管理，助力管理层实时决策。</p>
+                <h3>Windows 桌面软件开发</h3>
+                <p>为企业定制开发的 Windows 客户端，涵盖设备管理、数据录入、离线报表等功能。软件支持本地数据库、硬件对接及自动更新，满足企业内网环境使用需求。</p>
                 <div class="meta">
-                    <span><i class="fas fa-tag"></i> 企业服务</span>
-                    <span><i class="fas fa-code"></i> Python · ECharts · PostgreSQL</span>
+                    <span><i class="fas fa-tag"></i> 企业服务 · 管理</span>
+                    <span><i class="fas fa-code"></i> C# · .NET · SQLite · WPF</span>
                 </div>
             </div>
 
+            <!-- 案例3：设备管家助手 -->
             <div class="case-item">
                 <div class="top">
-                    <div class="icon"><i class="fas fa-robot"></i></div>
-                    <span class="tag">自动化</span>
+                    <div class="icon"><i class="fas fa-microchip"></i></div>
+                    <span class="tag">管理工具</span>
                 </div>
-                <h3>自动化采集工具</h3>
-                <p>定制爬虫 + 数据清洗 + 结构化输出，人效提升 5 倍，数据准确率 99.5%。</p>
+                <h3>设备管家助手</h3>
+                <p>面向中小企业的设备资产管理系统，支持设备台账、维修记录、保养提醒、扫码盘点等功能。帮助客户实现设备全生命周期管理，降低运维成本。</p>
                 <div class="meta">
-                    <span><i class="fas fa-tag"></i> 数据服务</span>
-                    <span><i class="fas fa-code"></i> Python · Playwright · Pandas</span>
+                    <span><i class="fas fa-tag"></i> 资产管理 · 运维</span>
+                    <span><i class="fas fa-code"></i> Vue · Python · PostgreSQL · 微信小程序</span>
                 </div>
             </div>
 
+            <!-- 案例4：官网定制开发 -->
             <div class="case-item">
                 <div class="top">
-                    <div class="icon"><i class="fas fa-calendar-check"></i></div>
-                    <span class="tag">小程序</span>
+                    <div class="icon"><i class="fas fa-globe"></i></div>
+                    <span class="tag">官网</span>
                 </div>
-                <h3>服务预约小程序</h3>
-                <p>在线预约 + 档期管理 + 消息通知，覆盖 50+ 服务网点。</p>
+                <h3>品牌官网定制开发</h3>
+                <p>为多家企业及个人工作室定制品牌官网，涵盖品牌展示、产品介绍、案例展示、在线咨询等功能。注重视觉设计、响应式布局与加载速度。</p>
                 <div class="meta">
-                    <span><i class="fas fa-tag"></i> 生活服务</span>
-                    <span><i class="fas fa-code"></i> 微信小程序 · WebSocket</span>
+                    <span><i class="fas fa-tag"></i> 品牌 · 展示</span>
+                    <span><i class="fas fa-code"></i> Vue · HTML/CSS · 响应式</span>
                 </div>
             </div>
 
@@ -352,12 +345,6 @@
     <footer class="footer">
         <div class="container">
             <p><span class="brand-foot">觉澜科技工作室</span> · 技术开发工作室</p>
-            <div class="footer-links">
-                <a href="index.html">首页</a>
-                <a href="services.html">服务</a>
-                <a href="cases.html">案例</a>
-                <a href="contact.html">联系</a>
-            </div>
         </div>
     </footer>
 
