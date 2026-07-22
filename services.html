@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>服务 · 觉澜科技工作室</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #07080e;
+            color: #e8ecf4;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0c1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #6366f1;
+            border-radius: 10px;
+        }
+
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.9rem 2.4rem;
+            background: rgba(7, 8, 14, 0.7);
+            backdrop-filter: blur(24px) saturate(1.6);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #e8ecf4;
+        }
+        .navbar .brand .logo-mark {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #fff;
+            font-weight: 800;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: 0.25s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: 0.3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-toggle {
+            display: none;
+            font-size: 1.4rem;
+            color: #e8ecf4;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header {
+            padding: 8rem 0 3rem;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        .page-header h1 .gradient {
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page-header p {
+            color: #94a3b8;
+            max-width: 520px;
+            margin: 0.5rem auto 0;
+        }
+
+        .service-detail {
+            padding: 2rem 0 5rem;
+        }
+        .service-detail .detail-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 2rem;
+            padding: 3rem 2.5rem;
+            margin-bottom: 2rem;
+            transition: 0.3s;
+        }
+        .service-detail .detail-card:hover {
+            border-color: rgba(99, 102, 241, 0.15);
+        }
+        .service-detail .detail-card .icon {
+            font-size: 2.8rem;
+            color: #818cf8;
+            margin-bottom: 1rem;
+        }
+        .service-detail .detail-card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        .service-detail .detail-card p {
+            color: #94a3b8;
+            max-width: 680px;
+            margin-bottom: 1rem;
+        }
+        .service-detail .detail-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .service-detail .detail-card ul li {
+            padding: 0.4rem 0;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+        .service-detail .detail-card ul li i {
+            color: #818cf8;
+            margin-right: 0.6rem;
+            width: 1.2rem;
+        }
+        .service-detail .detail-card .tech-stack {
+            margin-top: 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .service-detail .detail-card .tech-stack span {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #a5b4fc;
+        }
+
+        .footer {
+            padding: 2.5rem 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #475569;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .footer .brand-foot {
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .footer a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+        .footer .footer-links {
+            margin-top: 0.5rem;
+        }
+        .footer .footer-links a {
+            color: #64748b;
+            margin: 0 0.8rem;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .footer .footer-links a:hover {
+            color: #a5b4fc;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: rgba(7, 8, 14, 0.96);
+                backdrop-filter: blur(24px);
+                padding: 1.5rem 2rem;
+                border-radius: 1.5rem;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                position: absolute;
+                top: 70px;
+                right: 1rem;
+                width: 200px;
+                gap: 1rem;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            .service-detail .detail-card {
+                padding: 2rem 1.5rem;
+            }
+            .navbar {
+                padding: 0.8rem 1.2rem;
+            }
+            .container {
+                padding: 0 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particles-canvas"></canvas>
+
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <div class="logo-mark">觉</div>
+            <span>觉澜科技工作室</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="services.html" class="active">服务</a></li>
+            <li><a href="cases.html">案例</a></li>
+            <li><a href="contact.html">联系</a></li>
+        </ul>
+        <div class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1><span class="gradient">服务</span> 能力</h1>
+            <p>从需求梳理到交付上线，提供完整的技术
