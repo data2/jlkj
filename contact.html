@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>联系 · 觉澜科技工作室</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #07080e;
+            color: #e8ecf4;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0c1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #6366f1;
+            border-radius: 10px;
+        }
+
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.9rem 2.4rem;
+            background: rgba(7, 8, 14, 0.7);
+            backdrop-filter: blur(24px) saturate(1.6);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #e8ecf4;
+        }
+        .navbar .brand .logo-mark {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #fff;
+            font-weight: 800;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: 0.25s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: 0.3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-toggle {
+            display: none;
+            font-size: 1.4rem;
+            color: #e8ecf4;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header {
+            padding: 8rem 0 3rem;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        .page-header h1 .gradient {
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page-header p {
+            color: #94a3b8;
+            max-width: 520px;
+            margin: 0.5rem auto 0;
+        }
+
+        .contact-section {
+            padding: 1rem 0 5rem;
+        }
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .contact-info h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .contact-info p {
+            color: #94a3b8;
+            margin-bottom: 1.8rem;
+        }
+        .contact-info .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .contact-info .info-item .icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #818cf8;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .contact-info .info-item .text {
+            font-size: 0.95rem;
+        }
+        .contact-info .info-item .text .label {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+        .contact-info .info-item .text .value {
+            color: #e8ecf4;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 2rem;
+            padding: 2.5rem;
+        }
+        .contact-form .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .contact-form label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #94a3b8;
+            margin-bottom: 0.3rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            color: #e8ecf4;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            outline: none;
+            font-family: inherit;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #6366f1;
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .contact-form .btn-submit {
+            background: linear-gradient(135deg, #6366f1, #7c3aed);
+            color: #fff;
+            border: none;
+            padding: 0.8rem 2.4rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 24px rgba(99, 102, 241, 0.25);
+        }
+        .contact-form .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .footer {
+            padding: 2.5rem 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #475569;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .footer .brand-foot {
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .footer a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+        .footer .footer-links {
+            margin-top: 0.5rem;
+        }
+        .footer .footer-links a {
+            color: #64748b;
+            margin: 0 0.8rem;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .footer .footer-links a:hover {
+            color: #a5b4fc;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: rgba(7, 8, 14, 0.96);
+                backdrop-filter: blur(24px);
+                padding: 1.5rem 2rem;
+                border-radius: 1.5rem;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                position: absolute;
+                top: 70px;
+                right: 1rem;
+                width: 200px;
+                gap: 1rem;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            .contact-wrap {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .contact-form {
+                padding: 1.8rem;
+            }
+            .navbar {
+                padding: 0.8rem 1.2rem;
+            }
+            .container {
+                padding: 0 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particles-canvas"></canvas>
+
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <div class="logo-mark">觉</div>
+            <span>觉澜科技工作室</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="services.html">服务</a></li>
+            <li><a href="cases.html">案例</a></li>
+            <li><a href="contact.html" class="active">联系</a></li>
+        </ul>
+        <div class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1><span class="gradient">联系</span> 合作</h1>
+            <p>有想法？有需求？欢迎随时沟通</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-wrap">
+
+                <div class="contact-info">
+                    <h3>让技术落地你的业务</h3>
+                    <p>无论是定制开发、小程序搭建，还是效率工具，都欢迎聊聊你的想法。</p>
+
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                        <div class="text">
+                            <div class="label">邮箱</div>
+                            <div class="value">juelan@jlkj.shop</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-comment"></i></div>
+                        <div class="text">
+                            <div class="label">微信</div>
+                            <div class="value">JueLanTech</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="text">
+                            <div class="label">坐标</div>
+                            <div class="value">南京 · 鼓楼</div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label>你的名字</label>
+                        <input type="text" placeholder="如何称呼你" />
+                    </div>
+                    <div class="form-group">
+                        <label>联系方式</label>
+                        <input type="text" placeholder="微信 / 邮箱 / 电话" />
+                    </div>
+                    <div class="form-group">
+                        <label>项目需求</label>
+                        <textarea placeholder="简单描述你的想法或需求..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> 发送咨询
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p><span class="brand-foot">觉澜科技工作室</span> · 技术开发工作室</p>
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="services.html">服务</a>
+                <a href="cases.html">案例</a>
+                <a href="contact.html">联系</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let particles = [];
+            const count = 80;
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+
+            function createParticles() {
+                particles = [];
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.3,
+                        r: Math.random() * 1.6 + 0.6,
+                        alpha: Math.random() * 0.4 + 0.1
+                    });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0) p.x = width;
+                    if (p.x > width) p.x = 0;
+                    if (p.y < 0) p.y = height;
+                    if (p.y > height) p.y = 0;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(165, 180, 252, ${p.alpha})`;
+                    ctx.fill();
+                });
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 140) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(165, 180, 252, ${0.06 * (1 - dist / 140)})`;
+                            ctx.lineWidth = 0.6;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+
+            window.addEventListener('resize', () => {
+                resize();
+                createParticles();
+            });
+            resize();
+            createParticles();
+            draw();
+        })();
+
+        const toggle = document.getElementById('navToggle');
+        const links = document.getElementById('navLinks');
+        toggle.addEventListener('click', () => links.classList.toggle('open'));
+        links.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => links.classList.remove('open'));
+        });
+
+        // 表单提交提示
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感谢你的咨询！我们会尽快回复。');
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
