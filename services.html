@@ -45,13 +45,14 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 0.9rem 2.4rem;
+            padding: 1rem 2.4rem;
             background: rgba(7, 8, 14, 0.7);
             backdrop-filter: blur(24px) saturate(1.6);
             border-bottom: 1px solid rgba(99, 102, 241, 0.1);
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            gap: 4rem;
         }
         .navbar .brand {
             display: flex;
@@ -61,6 +62,7 @@
             font-weight: 700;
             text-decoration: none;
             color: #e8ecf4;
+            flex-shrink: 0;
         }
         .navbar .brand .logo-mark {
             width: 34px;
@@ -76,9 +78,9 @@
         }
         .nav-links {
             display: flex;
-            gap: 2.2rem;
+            gap: 3.2rem;
             list-style: none;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             font-weight: 500;
         }
         .nav-links a {
@@ -149,11 +151,12 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 2rem;
             padding: 3rem 2.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             transition: 0.3s;
         }
         .service-detail .detail-card:hover {
-            border-color: rgba(99, 102, 241, 0.15);
+            border-color: rgba(99, 102, 241, 0.2);
+            background: rgba(255, 255, 255, 0.03);
         }
         .service-detail .detail-card .icon {
             font-size: 2.8rem;
@@ -165,14 +168,17 @@
             font-weight: 700;
             margin-bottom: 0.8rem;
         }
-        .service-detail .detail-card p {
-            color: #94a3b8;
-            max-width: 680px;
-            margin-bottom: 1rem;
+        .service-detail .detail-card .desc {
+            color: #cbd5e1;
+            font-size: 1rem;
+            max-width: 720px;
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
         }
         .service-detail .detail-card ul {
             list-style: none;
             padding: 0;
+            margin-bottom: 1.2rem;
         }
         .service-detail .detail-card ul li {
             padding: 0.4rem 0;
@@ -185,7 +191,7 @@
             width: 1.2rem;
         }
         .service-detail .detail-card .tech-stack {
-            margin-top: 1.2rem;
+            margin-top: 1rem;
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
@@ -199,6 +205,15 @@
             font-weight: 500;
             color: #a5b4fc;
         }
+        .service-detail .detail-card .highlight-box {
+            background: rgba(99, 102, 241, 0.04);
+            border-left: 3px solid #6366f1;
+            padding: 1rem 1.5rem;
+            border-radius: 0.8rem;
+            margin-top: 1.2rem;
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
 
         .footer {
             padding: 2.5rem 0;
@@ -211,24 +226,13 @@
             font-weight: 600;
             color: #a5b4fc;
         }
-        .footer a {
-            color: #6366f1;
-            text-decoration: none;
-        }
-        .footer .footer-links {
-            margin-top: 0.5rem;
-        }
-        .footer .footer-links a {
-            color: #64748b;
-            margin: 0 0.8rem;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-        .footer .footer-links a:hover {
-            color: #a5b4fc;
-        }
 
         @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between;
+                gap: 0;
+                padding: 0.8rem 1.2rem;
+            }
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -242,6 +246,7 @@
                 right: 1rem;
                 width: 200px;
                 gap: 1rem;
+                font-size: 1rem;
             }
             .nav-links.open {
                 display: flex;
@@ -254,9 +259,6 @@
             }
             .service-detail .detail-card {
                 padding: 2rem 1.5rem;
-            }
-            .navbar {
-                padding: 0.8rem 1.2rem;
             }
             .container {
                 padding: 0 1.2rem;
@@ -287,4 +289,4 @@
     <section class="page-header">
         <div class="container">
             <h1><span class="gradient">服务</span> 能力</h1>
-            <p>从需求梳理到交付上线，提供完整的技术
+            <p>从需求梳理到交付上线，提供完整
