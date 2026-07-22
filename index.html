@@ -32,7 +32,6 @@
             border-radius: 10px;
         }
 
-        /* 粒子 */
         #particles-canvas {
             position: fixed;
             top: 0;
@@ -43,20 +42,21 @@
             pointer-events: none;
         }
 
-        /* 导航 */
+        /* ===== 导航（居中+字体大） ===== */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 0.9rem 2.4rem;
+            padding: 1rem 2.4rem;
             background: rgba(7, 8, 14, 0.7);
             backdrop-filter: blur(24px) saturate(1.6);
             border-bottom: 1px solid rgba(99, 102, 241, 0.1);
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            gap: 4rem;
         }
         .navbar .brand {
             display: flex;
@@ -66,6 +66,7 @@
             font-weight: 700;
             text-decoration: none;
             color: #e8ecf4;
+            flex-shrink: 0;
         }
         .navbar .brand .logo-mark {
             width: 34px;
@@ -81,9 +82,9 @@
         }
         .nav-links {
             display: flex;
-            gap: 2.2rem;
+            gap: 3.2rem;
             list-style: none;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             font-weight: 500;
         }
         .nav-links a {
@@ -273,13 +274,13 @@
             font-size: 1.05rem;
         }
 
-        /* 服务卡片 */
+        /* ===== 服务卡片 ===== */
         .services {
             padding: 5rem 0;
         }
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
         }
         .service-card {
@@ -345,23 +346,8 @@
             color: #a5b4fc;
             border: 1px solid rgba(99, 102, 241, 0.1);
         }
-        .service-card .learn-link {
-            display: inline-block;
-            margin-top: 1.2rem;
-            color: #818cf8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            position: relative;
-        }
-        .service-card .learn-link i {
-            transition: 0.3s;
-        }
-        .service-card .learn-link:hover i {
-            transform: translateX(4px);
-        }
 
-        /* 业务方向 */
+        /* ===== 业务方向 ===== */
         .domains {
             padding: 2rem 0 5rem;
         }
@@ -392,7 +378,7 @@
             gap: 0.4rem;
         }
 
-        /* CTA */
+        /* ===== CTA ===== */
         .cta-section {
             padding: 4rem 0;
             text-align: center;
@@ -410,7 +396,7 @@
             margin: 0 auto 2rem;
         }
 
-        /* 页脚 */
+        /* ===== 页脚（简化，无导航链接） ===== */
         .footer {
             padding: 2.5rem 0;
             text-align: center;
@@ -421,24 +407,14 @@
             font-weight: 600;
             color: #a5b4fc;
         }
-        .footer a {
-            color: #6366f1;
-            text-decoration: none;
-        }
-        .footer .footer-links {
-            margin-top: 0.5rem;
-        }
-        .footer .footer-links a {
-            color: #64748b;
-            margin: 0 0.8rem;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-        .footer .footer-links a:hover {
-            color: #a5b4fc;
-        }
 
+        /* ===== 响应式 ===== */
         @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between;
+                gap: 0;
+                padding: 0.8rem 1.2rem;
+            }
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -452,6 +428,7 @@
                 right: 1rem;
                 width: 200px;
                 gap: 1rem;
+                font-size: 1rem;
             }
             .nav-links.open {
                 display: flex;
@@ -474,9 +451,6 @@
             .section-title {
                 font-size: 2rem;
             }
-            .navbar {
-                padding: 0.8rem 1.2rem;
-            }
             .container {
                 padding: 0 1.2rem;
             }
@@ -498,7 +472,7 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
-    <!-- 导航 -->
+    <!-- ===== 导航（居中，字体大） ===== -->
     <nav class="navbar">
         <a href="index.html" class="brand">
             <div class="logo-mark">觉</div>
@@ -515,7 +489,7 @@
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- ===== Hero ===== -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -556,7 +530,7 @@
         </div>
     </section>
 
-    <!-- 服务概览 -->
+    <!-- ===== 服务能力（共4项：定制开发、小程序、效率工具、Windows桌面软件） ===== -->
     <section class="services" id="services">
         <div class="container">
             <h2 class="section-title">
@@ -564,44 +538,58 @@
             </h2>
             <p class="section-sub">以技术为底座，提供从需求到交付的全链路开发服务</p>
             <div class="card-grid">
+                <!-- 1. 软件定制开发 -->
                 <div class="service-card">
                     <span class="icon"><i class="fas fa-laptop-code"></i></span>
                     <h3>软件定制开发</h3>
                     <p>面向管理、业务场景的定制系统，支持私有化部署与数据接口对接。</p>
                     <div class="tags">
-                        <span>Node.js</span>
+                        <span>Java</span>
                         <span>Python</span>
-                        <span>PostgreSQL</span>
+                        <span>Vue</span>
                     </div>
-                    <a href="services.html#software" class="learn-link">了解详情 <i class="fas fa-arrow-right"></i></a>
                 </div>
+
+                <!-- 2. 小程序 · 垂直2C（去电商，偏工具/内容） -->
                 <div class="service-card">
                     <span class="icon"><i class="fab fa-weixin"></i></span>
                     <h3>小程序 · 垂直2C</h3>
-                    <p>电商、服务预约、会员体系、内容展示等小程序全流程开发与上线。</p>
+                    <p>工具类、内容展示、服务预约、会员体系等轻量级小程序开发与上线。</p>
                     <div class="tags">
                         <span>微信生态</span>
                         <span>云开发</span>
                         <span>支付</span>
                     </div>
-                    <a href="services.html#miniprogram" class="learn-link">了解详情 <i class="fas fa-arrow-right"></i></a>
                 </div>
+
+                <!-- 3. 效率工具 & 自动化 -->
                 <div class="service-card">
                     <span class="icon"><i class="fas fa-toolbox"></i></span>
-                    <h3>软件工具 & 自动化</h3>
-                    <p>数据抓取、批量处理、报表生成、效率插件等工具型产品开发。</p>
+                    <h3>效率工具 & 自动化</h3>
+                    <p>数据采集、批量处理、报表生成、流程自动化等工具型产品开发。</p>
                     <div class="tags">
                         <span>自动化</span>
                         <span>API</span>
                         <span>可视化</span>
                     </div>
-                    <a href="services.html#tools" class="learn-link">了解详情 <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- 4. Windows 桌面软件（新增） -->
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-windows"></i></span>
+                    <h3>Windows 桌面软件</h3>
+                    <p>面向企业及个人的桌面端应用开发，覆盖工具类、管理类、数据类场景。</p>
+                    <div class="tags">
+                        <span>C#</span>
+                        <span>Electron</span>
+                        <span>.NET</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 业务方向 -->
+    <!-- ===== 业务方向（去掉物品批发） ===== -->
     <section class="domains">
         <div class="container">
             <h2 class="section-title">
@@ -612,11 +600,12 @@
                 <span class="domain-pill"><i class="fas fa-code"></i> 软件开发</span>
                 <span class="domain-pill"><i class="fas fa-layer-group"></i> 垂直2C · 小程序</span>
                 <span class="domain-pill"><i class="fas fa-cog"></i> 软件工具</span>
+                <span class="domain-pill"><i class="fas fa-windows"></i> 桌面软件</span>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- ===== CTA ===== -->
     <section class="cta-section">
         <div class="container">
             <h2>让技术 <span style="color:#a5b4fc;">落地</span> 你的业务</h2>
@@ -627,16 +616,10 @@
         </div>
     </section>
 
-    <!-- 页脚 -->
+    <!-- ===== 页脚（无导航链接） ===== -->
     <footer class="footer">
         <div class="container">
             <p><span class="brand-foot">觉澜科技工作室</span> · 技术开发工作室</p>
-            <div class="footer-links">
-                <a href="index.html">首页</a>
-                <a href="services.html">服务</a>
-                <a href="cases.html">案例</a>
-                <a href="contact.html">联系</a>
-            </div>
         </div>
     </footer>
 
