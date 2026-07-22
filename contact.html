@@ -45,13 +45,14 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 0.9rem 2.4rem;
+            padding: 1rem 2.4rem;
             background: rgba(7, 8, 14, 0.7);
             backdrop-filter: blur(24px) saturate(1.6);
             border-bottom: 1px solid rgba(99, 102, 241, 0.1);
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            gap: 4rem;
         }
         .navbar .brand {
             display: flex;
@@ -61,6 +62,7 @@
             font-weight: 700;
             text-decoration: none;
             color: #e8ecf4;
+            flex-shrink: 0;
         }
         .navbar .brand .logo-mark {
             width: 34px;
@@ -76,9 +78,9 @@
         }
         .nav-links {
             display: flex;
-            gap: 2.2rem;
+            gap: 3.2rem;
             list-style: none;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             font-weight: 500;
         }
         .nav-links a {
@@ -142,105 +144,76 @@
         }
 
         .contact-section {
-            padding: 1rem 0 5rem;
-        }
-        .contact-wrap {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-        .contact-info h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .contact-info p {
-            color: #94a3b8;
-            margin-bottom: 1.8rem;
-        }
-        .contact-info .info-item {
+            padding: 2rem 0 6rem;
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .contact-info .info-item .icon {
-            width: 44px;
-            height: 44px;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            color: #818cf8;
-            font-size: 1.1rem;
-            flex-shrink: 0;
         }
-        .contact-info .info-item .text {
-            font-size: 0.95rem;
-        }
-        .contact-info .info-item .text .label {
-            font-size: 0.75rem;
-            color: #64748b;
-        }
-        .contact-info .info-item .text .value {
-            color: #e8ecf4;
-        }
-
-        .contact-form {
+        .contact-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 2rem;
-            padding: 2.5rem;
+            padding: 3.5rem 4rem;
+            max-width: 560px;
+            width: 100%;
+            text-align: center;
         }
-        .contact-form .form-group {
+        .contact-card .icon-big {
+            font-size: 3.6rem;
+            color: #818cf8;
             margin-bottom: 1.2rem;
         }
-        .contact-form label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #94a3b8;
-            margin-bottom: 0.3rem;
+        .contact-card h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
         }
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.7rem 1rem;
+        .contact-card p {
+            color: #94a3b8;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        .contact-card .email-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            color: #e8ecf4;
-            font-size: 0.95rem;
+            border-radius: 60px;
+            padding: 0.6rem 1.8rem 0.6rem 1.8rem;
             transition: 0.3s;
-            outline: none;
-            font-family: inherit;
         }
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border-color: #6366f1;
+        .contact-card .email-box:hover {
+            border-color: rgba(99, 102, 241, 0.25);
             background: rgba(255, 255, 255, 0.06);
         }
-        .contact-form textarea {
-            min-height: 120px;
-            resize: vertical;
+        .contact-card .email-box i {
+            color: #818cf8;
+            font-size: 1.2rem;
         }
-        .contact-form .btn-submit {
-            background: linear-gradient(135deg, #6366f1, #7c3aed);
-            color: #fff;
+        .contact-card .email-box .email {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #e8ecf4;
+            letter-spacing: 0.3px;
+        }
+        .contact-card .email-box .copy-btn {
+            background: none;
             border: none;
-            padding: 0.8rem 2.4rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.95rem;
+            color: #64748b;
             cursor: pointer;
+            font-size: 0.9rem;
             transition: 0.3s;
-            box-shadow: 0 4px 24px rgba(99, 102, 241, 0.25);
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
         }
-        .contact-form .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 40px rgba(99, 102, 241, 0.4);
+        .contact-card .email-box .copy-btn:hover {
+            color: #a5b4fc;
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .contact-card .hint {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #64748b;
         }
 
         .footer {
@@ -254,24 +227,13 @@
             font-weight: 600;
             color: #a5b4fc;
         }
-        .footer a {
-            color: #6366f1;
-            text-decoration: none;
-        }
-        .footer .footer-links {
-            margin-top: 0.5rem;
-        }
-        .footer .footer-links a {
-            color: #64748b;
-            margin: 0 0.8rem;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-        .footer .footer-links a:hover {
-            color: #a5b4fc;
-        }
 
         @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between;
+                gap: 0;
+                padding: 0.8rem 1.2rem;
+            }
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -285,6 +247,7 @@
                 right: 1rem;
                 width: 200px;
                 gap: 1rem;
+                font-size: 1rem;
             }
             .nav-links.open {
                 display: flex;
@@ -295,18 +258,25 @@
             .page-header h1 {
                 font-size: 2.2rem;
             }
-            .contact-wrap {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .contact-card {
+                padding: 2.5rem 1.8rem;
             }
-            .contact-form {
-                padding: 1.8rem;
-            }
-            .navbar {
+            .contact-card .email-box {
+                flex-wrap: wrap;
+                justify-content: center;
                 padding: 0.8rem 1.2rem;
+            }
+            .contact-card .email-box .email {
+                font-size: 1rem;
             }
             .container {
                 padding: 0 1.2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .contact-card .email-box .email {
+                font-size: 0.9rem;
+                word-break: break-all;
             }
         }
     </style>
@@ -340,55 +310,23 @@
 
     <section class="contact-section">
         <div class="container">
-            <div class="contact-wrap">
+            <div class="contact-card">
+                <div class="icon-big"><i class="fas fa-envelope"></i></div>
+                <h2>邮件联系</h2>
+                <p>项目咨询、需求沟通、合作意向，欢迎邮件交流</p>
 
-                <div class="contact-info">
-                    <h3>让技术落地你的业务</h3>
-                    <p>无论是定制开发、小程序搭建，还是效率工具，都欢迎聊聊你的想法。</p>
-
-                    <div class="info-item">
-                        <div class="icon"><i class="fas fa-envelope"></i></div>
-                        <div class="text">
-                            <div class="label">邮箱</div>
-                            <div class="value">juelan@jlkj.shop</div>
-                        </div>
-                    </div>
-
-                    <div class="info-item">
-                        <div class="icon"><i class="fas fa-comment"></i></div>
-                        <div class="text">
-                            <div class="label">微信</div>
-                            <div class="value">JueLanTech</div>
-                        </div>
-                    </div>
-
-                    <div class="info-item">
-                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="text">
-                            <div class="label">坐标</div>
-                            <div class="value">南京 · 鼓楼</div>
-                        </div>
-                    </div>
+                <div class="email-box">
+                    <i class="fas fa-envelope"></i>
+                    <span class="email">xgant@126.com</span>
+                    <button class="copy-btn" onclick="copyEmail()" title="复制邮箱">
+                        <i class="fas fa-copy"></i>
+                    </button>
                 </div>
 
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label>你的名字</label>
-                        <input type="text" placeholder="如何称呼你" />
-                    </div>
-                    <div class="form-group">
-                        <label>联系方式</label>
-                        <input type="text" placeholder="微信 / 邮箱 / 电话" />
-                    </div>
-                    <div class="form-group">
-                        <label>项目需求</label>
-                        <textarea placeholder="简单描述你的想法或需求..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">
-                        <i class="fas fa-paper-plane"></i> 发送咨询
-                    </button>
-                </form>
-
+                <div class="hint">
+                    <i class="fas fa-clock" style="margin-right:6px;color:#6366f1;"></i>
+                    工作日 24 小时内回复
+                </div>
             </div>
         </div>
     </section>
@@ -396,16 +334,11 @@
     <footer class="footer">
         <div class="container">
             <p><span class="brand-foot">觉澜科技工作室</span> · 技术开发工作室</p>
-            <div class="footer-links">
-                <a href="index.html">首页</a>
-                <a href="services.html">服务</a>
-                <a href="cases.html">案例</a>
-                <a href="contact.html">联系</a>
-            </div>
         </div>
     </footer>
 
     <script>
+        // 粒子
         (function() {
             const canvas = document.getElementById('particles-canvas');
             const ctx = canvas.getContext('2d');
@@ -473,6 +406,7 @@
             draw();
         })();
 
+        // 移动端导航
         const toggle = document.getElementById('navToggle');
         const links = document.getElementById('navLinks');
         toggle.addEventListener('click', () => links.classList.toggle('open'));
@@ -480,12 +414,41 @@
             link.addEventListener('click', () => links.classList.remove('open'));
         });
 
-        // 表单提交提示
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('感谢你的咨询！我们会尽快回复。');
-            this.reset();
-        });
+        // 复制邮箱
+        function copyEmail() {
+            const email = 'xgant@126.com';
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email).then(() => {
+                    showCopyFeedback();
+                }).catch(() => {
+                    fallbackCopy(email);
+                });
+            } else {
+                fallbackCopy(email);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const input = document.createElement('input');
+            input.value = text;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            showCopyFeedback();
+        }
+
+        function showCopyFeedback() {
+            const btn = document.querySelector('.copy-btn');
+            const icon = btn.querySelector('i');
+            const original = icon.className;
+            icon.className = 'fas fa-check';
+            icon.style.color = '#4ade80';
+            setTimeout(() => {
+                icon.className = original;
+                icon.style.color = '';
+            }, 2000);
+        }
     </script>
 
 </body>
